@@ -31,7 +31,6 @@
 
 	<style type="text/css">
 		
-		
 		.instant_animation {
 			-webkit-animation-delay: 0s;
 
@@ -86,28 +85,65 @@
 			background-color: #f5f5f5;
 		}
 
-
 		a:link {
 			color: #03673B;
-
 		}
 
 		a:hover {
 			color: #CBA734;
 			text-decoration: none;
 
-
 		}
 	</style>
+	
+	
+	<!--FullCalendar Script/Link Imports-->
+	<script src="FullCalendar/moment.min.js"></script>
+	<link rel="stylesheet" href="fullcalendar/fullcalendar.css" />
+	<script src="fullcalendar/fullcalendar.js"></script>
+	
+	
+	<script>
+	$(function() {
+
+  // page is now ready, initialize the calendar...
+
+  $('#calendar').fullCalendar({
+	  handleWindowResize: true,
+	  defaultView: 'listWeek',
+	  height: "auto"
+	  //use 'listMonth' to have a view of the whole month... More documentation on options here:https://fullcalendar.io/docs/list-view 
+    // put your options and callbacks here
+  })
+
+});
+		</script>
+	
+	
 </head>
 
 <body>
 
 	<div class="container">
+		<div class="row">
+		<div class="col-6 col-sm-12 mb-4 hvr-float" id="calendar">	
+			</div>	
+			
+		<div class="col-6 col-sm-12 mb-4 hvr-float" >	
+			<iframe src="https://calendar.google.com/calendar/embed?src=zskubic%40gmail.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
+			</div>	
+			
+		
+		</div>
+		
+		
 		<h1 class="my-4">AardvarkSimulator 2048</h1>
 
-
+		
+		
+		
+		
 
 		<div class="row">
 			<div class="col-6 col-sm-3 mb-4 hvr-float">
@@ -128,10 +164,7 @@ function init() {
   document.getElementById("weekday").textContent= DDD;
   document.getElementById("month").textContent= MMM;
   
-  // var DDDD = time.toLocaleString(locale, { weekday: "long" });
-  // var MM   = time.getMonth() + 1;
-  // var MMMM = time.toLocaleString(locale, {month: "long"});
-  // var YYYY = time.getFullYear();
+	
 }
 ]]></script>
 
@@ -171,10 +204,10 @@ function init() {
   font-size="64px"
   style="text-anchor: middle"></text>
 </svg>
-<!-- Here's where this above SVG came from... Shoutout to this individual for making such a useful SVG! -->
 					<h3 align="center" id="calText" class="app_subtext_col1 animated bounceInLeft">Calendar</h3>
 				</a>
 			</div>
+		</div>
 
 
 <!-- Source for the SVG calendar that shows today's date is here
@@ -221,9 +254,7 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 	
 	
 	
-
-
-
+	
 	
 	
 	<!-- Footer SWITCH THIS FOOTER OUT FOR ONE THAT MOVES -- HAVE NAME, SCHOOL STUFF, AND LINKS TO GMAIL AND GOOGLE DRIVE BEAUSE WHY NOT?? -->
