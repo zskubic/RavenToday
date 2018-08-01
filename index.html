@@ -111,7 +111,9 @@
   $('#calendar').fullCalendar({
 	  handleWindowResize: true,
 	  defaultView: 'listWeek',
-	  height: "auto"
+	  height: "auto",
+	  aspectRatio: 0.5,
+	  //themeSystem: 'bootstrap4'
 	  //use 'listMonth' to have a view of the whole month... More documentation on options here:https://fullcalendar.io/docs/list-view 
     // put your options and callbacks here
   })
@@ -126,7 +128,9 @@
 
 	<div class="container">
 		<div class="row">
-		<div class="col-6 col-sm-12 mb-4 hvr-float" id="calendar">	
+		<div class="col-6 col-sm-12 mb-4 hvr-float">
+			<div id="calendar">
+			</div>
 			</div>	
 			
 		<div class="col-6 col-sm-12 mb-4 hvr-float" >	
@@ -207,6 +211,7 @@ function init() {
 					<h3 align="center" id="calText" class="app_subtext_col1 animated bounceInLeft">Calendar</h3>
 				</a>
 			</div>
+			
 		</div>
 
 
