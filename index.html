@@ -5,6 +5,8 @@
 	Need to change animations so that when "app name" is hovered over, there is some cool gradiation animation and maybe have the raven flap or some stuff like that.
 
 - "card" is for border
+
+- FIX KEY CLUB LOGO!
 	
 -->
 
@@ -30,6 +32,7 @@
 	<link href="css/hover.css" rel="stylesheet">
 
 	<style type="text/css">
+		
 		
 		.instant_animation {
 			-webkit-animation-delay: 0s;
@@ -85,29 +88,28 @@
 			background-color: #f5f5f5;
 		}
 
+
 		a:link {
 			color: #03673B;
+
 		}
 
 		a:hover {
 			color: #CBA734;
 			text-decoration: none;
 
+
 		}
 	</style>
 	
 	
-	<!--FullCalendar Script/Link Imports-->
 	<script src="FullCalendar/moment.min.js"></script>
 	<link rel="stylesheet" href="fullcalendar/fullcalendar.css" />
 	<script src="fullcalendar/fullcalendar.js"></script>
 	
-	
 	<script>
 	$(function() {
-
   // page is now ready, initialize the calendar...
-
   $('#calendar').fullCalendar({
 	  handleWindowResize: true,
 	  defaultView: 'listWeek',
@@ -117,40 +119,39 @@
 	  //use 'listMonth' to have a view of the whole month... More documentation on options here:https://fullcalendar.io/docs/list-view 
     // put your options and callbacks here
   })
-
 });
 		</script>
-	
 	
 </head>
 
 <body>
-
+	
+<!-- Calendar and MSG Board DIV -->
+<div class="container mb-5 mp-5">
+	
+	<h1 class="my-4">RavenToday</h1>
+	
+	<div class="row mr-2">
+			<div class="col-12 col-md-8 mb-4 hvr-float">
+			
+				<h2 class="my-4">MESSAGES WILL GO HERE</h1>
+				
+			</div>	
+		
+			<div class="col-6 col-md-4 mb-4 hvr-float">
+				<div id="calendar"></div>
+			</div>	
+			
+	</div>
+</div>
+	
+	
+	<!--Icon List-->
 	<div class="container">
-		<div class="row">
-		<div class="col-6 col-sm-12 mb-4 hvr-float">
-			<div id="calendar">
-			</div>
-			</div>	
-			
-		<div class="col-6 col-sm-12 mb-4 hvr-float" >	
-			<iframe src="https://calendar.google.com/calendar/embed?src=zskubic%40gmail.com&ctz=America%2FNew_York" style="border: 0" width="800" height="600" frameborder="0" scrolling="no"></iframe>
 
-			</div>	
-			
-		
-		</div>
-		
-		
-		<h1 class="my-4">AardvarkSimulator 2048</h1>
-
-		
-		
-		
-		
 
 		<div class="row">
-			<div class="col-6 col-sm-3 mb-4 hvr-float">
+			<div class="col-6 col-sm-2 mb-4 hvr-float">
 				<a href="#" id="calIcon">						 
 						 <svg onload="init()" xmlns="http://www.w3.org/2000/svg"
 aria-label="Calendar" role="img"
@@ -168,7 +169,10 @@ function init() {
   document.getElementById("weekday").textContent= DDD;
   document.getElementById("month").textContent= MMM;
   
-	
+  // var DDDD = time.toLocaleString(locale, { weekday: "long" });
+  // var MM   = time.getMonth() + 1;
+  // var MMMM = time.toLocaleString(locale, {month: "long"});
+  // var YYYY = time.getFullYear();
 }
 ]]></script>
 
@@ -208,11 +212,10 @@ function init() {
   font-size="64px"
   style="text-anchor: middle"></text>
 </svg>
+<!-- Here's where this above SVG came from... Shoutout to this individual for making such a useful SVG! -->
 					<h3 align="center" id="calText" class="app_subtext_col1 animated bounceInLeft">Calendar</h3>
 				</a>
 			</div>
-			
-		</div>
 
 
 <!-- Source for the SVG calendar that shows today's date is here
@@ -220,20 +223,20 @@ https://jsfiddle.net/8rcrfpwn/4/
 as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 
 
-			<div class="col-6 col-sm-3 mb-4 hvr-float">
+			<div class="col-6 col-sm-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="Library.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
 					<h3 align="center" class="animated bounceInLeft app_subtext_col2">Library</h3>
 				</a>
 			</div>
-			<div class="col-6 col-sm-3 mb-4 hvr-float">
+			<div class="col-6 col-sm-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="Ravens Athletics Logo 2.svg" class="pb-2 app_icon_col3 animated flipInX" id="athleticsIcon">
 					<h3 align="center" class="animated bounceInLeft app_subtext_col3">Athletics</h3>
 				</a>
 			</div>
 
-			<div class="col-6 col-sm-3 mb-4 hvr-float">
+			<div class="col-6 col-sm-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="key club svg.svg" class="pb-2 app_icon_col4 animated flipInX">
 					<h3 align="center" class="app_subtext_col4 animated bounceInLeft">Key Club</h3>
@@ -243,7 +246,7 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 			
 			
 			<!-- KEYCLUB --> 
-			<div class="col-6 col-sm-3 mb-4 hvr-float">
+			<div class="col-6 col-sm-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="key club svg.svg" class="pb-2 app_icon_col4 animated flipInX" id="appIcon">
 					<h3 align="center" class="app_subtext_col4 animated bounceInLeft">Key Club</h3>
@@ -259,7 +262,9 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 	
 	
 	
-	
+
+
+
 	
 	
 	<!-- Footer SWITCH THIS FOOTER OUT FOR ONE THAT MOVES -- HAVE NAME, SCHOOL STUFF, AND LINKS TO GMAIL AND GOOGLE DRIVE BEAUSE WHY NOT?? -->
