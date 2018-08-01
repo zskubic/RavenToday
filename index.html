@@ -1,153 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<!-- 
+<!-- 
 	Need to change animations so that when "app name" is hovered over, there is some cool gradiation animation and maybe have the raven flap or some stuff like that.
 
+- "card" is for border
 	
---> 
-	
-  <head>
+-->
 
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-    <title>RavenToday</title>
+	<title>RavenToday</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+	<!-- Bootstrap core JavaScript -->
+	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Custom styles for this template -->
-    <link href="css/modern-business.css" rel="stylesheet">
+
+	<!-- Bootstrap core CSS -->
+	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+	<!-- Custom styles for this template -->
+	<link href="css/modern-business.css" rel="stylesheet">
 	<link href="css/animate.css" rel="stylesheet">
+	<link href="css/hover.css" rel="stylesheet">
+
+	<style type="text/css">
+		.instant_animation {
+			-webkit-animation-delay: 0s;
+
+		}
+
+		.app_icon_col1 {
+			-webkit-animation-delay: .3s;
+			-webkit-animation-duration: 1s;
+		}
+
+		.app_icon_col2 {
+			-webkit-animation-delay: .35s;
+			-webkit-animation-duration: 1.2s;
+		}
+
+		.app_icon_col3 {
+			-webkit-animation-delay: .4s;
+			-webkit-animation-duration: 1.3s;
+		}
+
+		.app_icon_col4 {
+			-webkit-animation-delay: .43s;
+			-webkit-animation-duration: 1.4s;
+		}
+
+
+		.app_subtext_col1 {
+			-webkit-animation-delay: .3s;
+		}
+
+		.app_subtext_col2 {
+			-webkit-animation-delay: .35s;
+		}
+
+		.app_subtext_col3 {
+			-webkit-animation-delay: .4s;
+		}
+
+		.app_subtext_col4 {
+			-webkit-animation-delay: .43s;
+		}
+
+
+		.footer {
+			position: absolute;
+			bottom: 0;
+			width: 100%;
+			height: 45px;
+			/* Set the fixed height of the footer here */
+			line-height: 45px;
+			/* Vertically center the text there */
+			background-color: #f5f5f5;
+		}
+
+
+		a:link {
+			color: #03673B;
+
+		}
+
+		a:hover {
+			color: #CBA734;
+			text-decoration: none;
+
+
+		}
+	</style>
+</head>
+
+<body>
+
+	<div class="container">
+
+		<h1 class="my-4">AardvarkSimulator 2048</h1>
+
+
+
+		<div class="row">
+			<div class="col-6 col-sm-3 mb-4 hvr-float">
+				<a href="#" id="calIcon" class="card">
+					<object data="https://shkspr.mobi/svg/calendar.svg" type="image/svg+xml"></object>
+					<h3 align="center" id="calText" class="app_subtext_col1 animated bounceInLeft">Calendar</h3>
+				</a>
+			</div>
+
+
+<!-- Source for the SVG calendar that shows today's date is here
+https://jsfiddle.net/8rcrfpwn/4/
+as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
+
+
+			<div class="col-6 col-sm-3 mb-4 hvr-float">
+				<a href="#" class="card">
+					<img src="Library.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
+					<h3 align="center" class="animated bounceInLeft app_subtext_col2">Library</h3>
+				</a>
+			</div>
+			<div class="col-6 col-sm-3 mb-4 hvr-float">
+				<a href="#" class="card">
+					<img src="Ravens Athletics Logo 2.svg" class="pb-2 app_icon_col3 animated flipInX" id="athleticsIcon">
+					<h3 align="center" class="animated bounceInLeft app_subtext_col3">Athletics</h3>
+				</a>
+			</div>
+
+			<div class="col-6 col-sm-3 mb-4 hvr-float">
+				<a href="#" class="card">
+					<img src="key club svg.svg" class="pb-2 app_icon_col4 animated flipInX" id="appIcon">
+					<h3 align="center" class="app_subtext_col4 animated bounceInLeft">Key Club</h3>
+				</a>
+			</div>
+			
+			
+			
+			<!-- KEYCLUB --> 
+			<div class="col-6 col-sm-3 mb-4 hvr-float">
+				<a href="#" class="card">
+					<img src="key club svg.svg" class="pb-2 app_icon_col4 animated flipInX" id="appIcon">
+					<h3 align="center" class="app_subtext_col4 animated bounceInLeft">Key Club</h3>
+				</a>
+			</div>
+			
+			
+			
+			
+		</div>
+	</div>
+	<!-- /.row -->
 	
-	  <style type="text/css">
-		  .app_icon_col1 {
-			  -webkit-animation-delay:.32s;
-			  -webkit-animation-duration:1s;
-		  }
-		  
-		  .app_icon_col2 {
-			  -webkit-animation-delay:.35s;
-			  -webkit-animation-duration:1.2s;
-		  }
-		  
-		  .app_icon_col3 {
-			  -webkit-animation-delay:.4s;
-			  -webkit-animation-duration:1.3s;
-		  }
-		  
-		  .app_icon_col4 {
-			  -webkit-animation-delay:.43s;
-			  -webkit-animation-duration:1.4s;
-		  }
-		  
-		  
-		  .app_subtext_col1 {
-			  -webkit-animation-delay:.3s;
-		}
-		  
-		  .app_subtext_col2 {
-			  -webkit-animation-delay:.35s;
-		}
-		  
-		  .app_subtext_col3 {
-			  -webkit-animation-delay:.4s;
-		}
-		  
-		  .app_subtext_col4 {
-			  -webkit-animation-delay:.43s;
-		}
-		  
-		
-		  .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  height: 45px; /* Set the fixed height of the footer here */
-  line-height: 45px; /* Vertically center the text there */
-  background-color: #f5f5f5;
-}
-		  
-		  
-		  a:link {
-			  color:#03673B;
-			  
-		  }
-		  
-		  a:hover{
-			  color:#CBA734;
-			  text-decoration: none;
-			  
-			  
-		  }
-		  
-	  </style>
-	  
-	  <script>
-	  $('#calIcon').on('click', function(){
-		  $('#calText').removeClass('bounceInLeft');
-		  $('#calText').addClass('bounce');
+	
+	
+
+
+
+	
+	
+	<!-- Footer SWITCH THIS FOOTER OUT FOR ONE THAT MOVES -- HAVE NAME, SCHOOL STUFF, AND LINKS TO GMAIL AND GOOGLE DRIVE BEAUSE WHY NOT?? -->
+	<footer class="bg-dark footer">
+		<div class="container">
+			<p class="m-0 text-center text-white">Copyright &copy; Zach Skubic 2018 for BB</p>
+		</div>
+		<!-- /.container -->
+	</footer>
+</body>
+
+
+<script>
+
+	$('#calText').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend animationend', function () {
+		$('.container').find('*').removeClass('animated');
+	});
+
+</script>
+
+
+<!-- <script>
+	  $('#calIcon').on('mouseover', function(){
+		  console.log("TOPk3k");
+		  $('#calText').removeClass('bounceInLeft app_subtext_col1');
+		  $('#calText').addClass('hvr-bounce-in instant_animation');
+		  $('#calText').one('webkitAnimationEnd mozAnimationEnd MSAnimationEnd onanimationend animationend', function(){
+		  	$('#calText').removeClass('hvr-bounce-in instant_animation');	  
+		  });
 	  })
-	  </script>
-	 
-	
-	  
-	  
-	  
-  </head>
+	  </script> -->
 
-  <body>
 
-    <div class="container">
-
-      <h1 class="my-4">RavenToday</h1>
-
-      <!-- Marketing Icons Section -->
-     <div class="row">
-         <div class="col-6 col-sm-3 mb-4">
-		<a href="#" id="calIcon"><img src="Ravenscroft R Logo.svg" class="mb-2 app_icon_col1 animated flipInX">
-			<h3 align="center" id="calText" class="animated bounceInLeft app_subtext_col1" >Calendar</h3></a>
-            </div>
-        <div class="col-6 col-sm-3 mb-4">
-		<a href="#"><img src="Library.svg" class="mb-2 app_icon_col2 animated flipInX" id="libraryIcon">
-			<h3 align="center" class="animated bounceInLeft app_subtext_col2">Library</h3></a>
-            </div>
-        <div class="col-6 col-sm-3 mb-4">
-		<a href="#"><img src="Ravens Athletics Logo 2.svg" class="mb-2 app_icon_col3 animated flipInX" id="athleticsIcon">
-			<h3 align="center" class="animated bounceInLeft app_subtext_col3">Athletics</h3></a>
-            </div>
-		  
-		  
-		  
-		  
-		
-		  <!-- MAIN LINE HERE--> 
-		  
-		<div class="col-6 col-sm-3 mb-4">
-		<a href="#"><img src="Ravens Athletics Logo 2.svg" class="mb-2 app_icon_col4 animated flipInX" id="appIcon">
-			<h3 align="center" class="app_subtext_col4 animated bounceInLeft">Athletics</h3></a>
-            </div>
-          </div>
-        </div>  
-	  <!-- /.row -->
-
-	  
-	 
-    <!-- Footer -->
-    <footer class="bg-dark footer">
-      <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Zach Skubic 2018 for Ravenscroft School</p>
-      </div>
-      <!-- /.container -->
-    </footer>
-
-    <!-- Bootstrap core JavaScript -->
-    <script src="vendor/jquery/jquery.min.js"></script>
-    <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-
-  </body>
 
 </html>
