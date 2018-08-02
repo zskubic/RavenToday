@@ -120,9 +120,12 @@
 	  handleWindowResize: true,
 	  defaultView: 'listWeek',
 	  height: 'auto',
-	 
+	  header: {
+	  	left:   'title',
+  	  	center: '',
+  	  	right:  'prev,next'  
+	  },
 	  themeSystem: 'bootstrap4',
-	  close: 'fa-times',
   	  prev: 'fa-chevron-left',
   	  next: 'fa-chevron-right',
   
@@ -143,13 +146,13 @@
 	<h1 class="my-4">RavenToday</h1>
 	
 	<div class="row mr-2">
-			<div class="col-12 col-md-7 mb-4">
+			<div class="col-12 col-lg-7 mb-4">
 			
 				<h2 class="my-4">MESSAGES WILL GO HERE</h2>
 				
 			</div>	
 		
-			<div class="col-12 col-md-5 mb-4">
+			<div class="col-12 col-lg-5 mb-4">
 				<div id="calendar"></div>
 			</div>	
 			
