@@ -19,16 +19,16 @@
 	<title>RavenToday</title>
 
 	<!-- Bootstrap core JavaScript -->
-	<script src="vendor/jquery/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<!-- FONTAWESOME --> 
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
 
-
-	<script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
-
+	<!-- Format for jQuery --> 
+	<script src="js/jquery.format.js"></script> 
+	
 
 	<!-- Custom styles for this template -->
 	<link href="css/modern-business.css" rel="stylesheet">
@@ -108,11 +108,7 @@
 		}		
 	</style>
 	
-	
-	
-	
-	
-	
+
 	
 	
 	
@@ -124,6 +120,7 @@
 	<script src="fullcalendar/fullcalendar.js"></script>
 	
 	<script>
+		
 	$(function() {
   // page is now ready, initialize the calendar...
   $('#calendar').fullCalendar({
@@ -147,6 +144,8 @@
     // put your options and callbacks here
   })
 });
+		
+	
 		</script>
 	
 </head>
@@ -161,11 +160,7 @@
 			
 
 <!--Medium Articles  Special thanks to Jason Matthew for his Medium article on RSS feeds/JSON instructions for grabbing medium articles... SOURCE:  	https://medium.jasonmdesign.com/display-medium-articles-on-your-site-d772b3b05779 --> 
-				
-				
-				
-				
-				
+			
 				<!-- Blog-->
 <section class="section blog" id="blog">
   <div class="container">
@@ -187,6 +182,8 @@ $.get('https://api.rss2json.com/v1/api.json', data, function (response) {
 if (response.status == 'ok') {
 var output = '';
 $.each(response.items, function (k, item) {
+	console.log(item);
+	console.log(item.pubDate);
 var visibleSm;
 if(k < 3){
 visibleSm = '';
@@ -195,7 +192,8 @@ visibleSm = ' visible-sm';
 }
 output += '<div class="col-sm-6 col-md-4' + visibleSm + '">';
 output += '<div class="blog-post"><header>';
-//    NEED THIS TO GET DATE WORKING output += '<h4 class="date">' + $.format.date(item.pubDate, "dd<br>MMM") + "</h4>";
+console.log($.format);	
+output += '<h4 class="date">' + $.format.date(item.pubDate, "dd<br>MMM") + "</h4>";
 var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
 var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
 var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
@@ -214,6 +212,7 @@ output += '<p>' + trimmedString + '...</p>';
 output += '</div></div></div>';
 return k < 3;
 });
+	//end of each loop
 $content.html(output);
 }
 });
