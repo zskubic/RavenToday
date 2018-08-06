@@ -23,12 +23,13 @@
 	<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 	<!-- Bootstrap core CSS -->
 	<link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-	<!-- FONTAWESOME --> 
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+	<!-- FONTAWESOME -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+	 crossorigin="anonymous">
 
-	<!-- Format for jQuery --> 
-	<script src="js/jquery.format.js"></script> 
-	
+	<!-- Format for jQuery -->
+	<script src="js/jquery.format.js"></script>
+
 
 	<!-- Custom styles for this template -->
 	<link href="css/modern-business.css" rel="stylesheet">
@@ -36,9 +37,9 @@
 	<link href="css/hover.css" rel="stylesheet">
 	<link href="css/fullcalendar.print.min.css" rel="stylesheet" media="print">
 	<link href="css/blog.css" rel="stylesheet">
-	
-	
-	
+
+
+
 	<style type="text/css">
 		.instant_animation {
 			-webkit-animation-delay: 0s;
@@ -105,215 +106,197 @@
 			text-decoration: none;
 
 
-		}		
+		}
 	</style>
-	
 
-	
-	
-	
-	
-	
-	
+
+
+
+
+
+
+
 	<script src="FullCalendar/moment.min.js"></script>
 	<link rel="stylesheet" href="fullcalendar/fullcalendar.css" />
 	<script src="fullcalendar/fullcalendar.js"></script>
-	
+
 	<script>
-		
-	$(function() {
-  // page is now ready, initialize the calendar...
-  $('#calendar').fullCalendar({
-	  handleWindowResize: true,
-	  defaultView: 'listWeek',
-	  height: 'auto',
-	  titleFormat: 'MMM D',
-	  header: {
-	  	left:   'title',
-  	  	center: '',
-  	  	right:  'prev,next'  
-	  },
-	  firstDay: 1,
-	  // change to 0 to start on SUNDAY, 1 starts on MONDAY
-	  themeSystem: 'bootstrap4',
-  	  prev: 'fa-chevron-left',
-  	  next: 'fa-chevron-right',
-  
-	  
-	  //use 'listMonth' to have a view of the whole month... More documentation on options here:https://fullcalendar.io/docs/list-view 
-    // put your options and callbacks here
-  })
-});
-		
-	
-		</script>
-	
+
+		$(function () {
+			// page is now ready, initialize the calendar...
+			$('#calendar').fullCalendar({
+				handleWindowResize: true,
+				defaultView: 'listWeek',
+				height: 'auto',
+				titleFormat: 'MMM D',
+				header: {
+					left: 'title',
+					center: '',
+					right: 'prev,next'
+				},
+				firstDay: 1,
+				// change to 0 to start on SUNDAY, 1 starts on MONDAY
+				themeSystem: 'bootstrap4',
+				prev: 'fa-chevron-left',
+				next: 'fa-chevron-right',
+
+
+				//use 'listMonth' to have a view of the whole month... More documentation on options here:https://fullcalendar.io/docs/list-view 
+				// put your options and callbacks here
+			})
+		});
+
+
+	</script>
+
 </head>
 
 <body>
-	
-<!-- Calendar and MSG Board DIV -->
-<div class="container mb-3">
-	<p class="h1 my-2">RavenToday</p>
-	<div class="row mr-2">
-			<div class="col-12 col-lg-7 mb-4">
-			
 
-<!--Medium Articles  Special thanks to Jason Matthew for his Medium article on RSS feeds/JSON instructions for grabbing medium articles... SOURCE:  	https://medium.jasonmdesign.com/display-medium-articles-on-your-site-d772b3b05779 --> 
-			
+	<!-- Calendar and MSG Board DIV -->
+	<div class="container mb-3">
+		<p class="h1 my-2">RavenToday</p>
+		<div class="row mr-2">
+			<div class="col-12 col-lg-7 mb-4">
+
+
+				<!--Medium Articles  Special thanks to Jason Matthew for his Medium article on RSS feeds/JSON instructions for grabbing medium articles... SOURCE:  	https://medium.jasonmdesign.com/display-medium-articles-on-your-site-d772b3b05779 -->
+
 				<!-- Blog-->
-<section class="section blog" id="blog">
-  <div class="container">
-    <!---->
-    <header class="section-heading">
-      <h2>Announcements</h2>
-	</header>
-    <!---->
-    <div class="section-content" id="blogContent">
-      <div class="row" id="jsonContent">
-		  
-		<script type="text/javascript">
-	$(function () {
-var $content = $('#jsonContent');
-var data = {
-rss_url: 'http://medium.jasonmdesign.com/feed'
-};
-$.get('https://api.rss2json.com/v1/api.json', data, function (response) {
-if (response.status == 'ok') {
-var output = '';
-$.each(response.items, function (k, item) {
-	console.log(item);
-	console.log(item.pubDate);
-var visibleSm;
-if(k < 3){
-visibleSm = '';
-} else {
-visibleSm = ' visible-sm';
-}
-output += '<div class="col-sm-6 col-md-4' + visibleSm + '">';
-output += '<div class="blog-post"><header>';
-console.log($.format);	
-output += '<h4 class="date">' + $.format.date(item.pubDate, "dd<br>MMM") + "</h4>";
-var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
-var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
-var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
-var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
-var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
-//output += '<div class="blog-element"><img class="img-responsive" src="' + src + '" width="360px" height="240px"></div></header>';
-output += '<div class="blog-content"><h4><a href="'+ item.link + '">' + item.title + '</a></h4>';
-output += '<div class="post-meta"><span>By ' + item.author + '</span></div>';
-var yourString = item.description.replace(/<img[^>]*>/g,"");
-var maxLength = 160 // maximum number of characters to extract
-//trim the string to the maximum length
-var trimmedString = yourString.substr(0, maxLength);
-//re-trim if we are in the middle of a word
-trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
-output += '<p>' + trimmedString + '...</p>';
-output += '</div></div></div>';
-return k < 3;
-});
-	//end of each loop
-$content.html(output);
-}
-});
-});
-	</script>	
-		  
-		  
-		</div>
-    </div>
-    <!-- /#blogContent-->
-    <div class="text-center"><a class="btn btn-dark" id="loadBlogPosts" href="//medium.jasonmdesign.com">View All<span class="fa fa-angle-double-right"></span></a></div>
-  </div>
-  <!-- /.container-->
-</section>
-<!-- Blog-->
-				
-				
-				
-				
-				
-			</div>	
-		
+				<section class="section blog" id="blog">
+					<div class="container">
+						<!---->
+						<header class="section-heading">
+							<h2>Announcements</h2>
+						</header>
+						<!---->
+						<div class="section-content" id="blogContent">
+							<div class="row" id="jsonContent">
+
+								<script type="text/javascript">
+									$(function () {
+										var $content = $('#jsonContent');
+										var data = {
+											rss_url: 'http://medium.jasonmdesign.com/feed'
+										};
+										$.get('https://api.rss2json.com/v1/api.json', data, function (response) {
+											if (response.status == 'ok') {
+												var output = '';
+												$.each(response.items, function (k, item) {
+													var visibleSm;
+													if (k < 3) {
+														visibleSm = '';
+													} else {
+														visibleSm = ' visible-sm';
+													}
+													output += '<div class="col-sm-6 col-md-4' + visibleSm + '">';
+													output += '<div class="blog-post"><header>';
+													output += '<h4 class="date">' + $.format.date(new Date(item.pubDate), "dd<br>MMM") + "</h4>";
+													var tagIndex = item.description.indexOf('<img'); // Find where the img tag starts
+													var srcIndex = item.description.substring(tagIndex).indexOf('src=') + tagIndex; // Find where the src attribute starts
+													var srcStart = srcIndex + 5; // Find where the actual image URL starts; 5 for the length of 'src="'
+													var srcEnd = item.description.substring(srcStart).indexOf('"') + srcStart; // Find where the URL ends
+													var src = item.description.substring(srcStart, srcEnd); // Extract just the URL
+													//output += '<div class="blog-element"><img class="img-responsive" src="' + src + '" width="360px" height="240px"></div></header>';
+													output += '<div class="blog-content"><h4><a href="' + item.link + '">' + item.title + '</a></h4>';
+													output += '<div class="post-meta"><span>By ' + item.author + '</span></div>';
+													var yourString = item.description.replace(/<img[^>]*>/g, "");
+													var maxLength = 160 // maximum number of characters to extract
+													//trim the string to the maximum length
+													var trimmedString = yourString.substr(0, maxLength);
+													//re-trim if we are in the middle of a word
+													trimmedString = trimmedString.substr(0, Math.min(trimmedString.length, trimmedString.lastIndexOf(" ")))
+													output += '<p>' + trimmedString + '...</p>';
+													output += '</div></div></div>';
+													return k < 3;
+												});
+												//end of each loop
+												$content.html(output);
+											}
+										});
+									});
+								</script>
+
+
+							</div>
+						</div>
+						<!-- /#blogContent-->
+						<div class="text-center">
+							<a class="btn btn-dark" id="loadBlogPosts" href="//medium.jasonmdesign.com">View All
+								<span class="fa fa-angle-double-right"></span>
+							</a>
+						</div>
+					</div>
+					<!-- /.container-->
+				</section>
+				<!-- Blog-->
+
+
+
+
+
+			</div>
+
 			<div class="col-12 col-lg-5 mb-4">
 				<div id="calendar"></div>
-			</div>	
-			
+			</div>
+
+		</div>
 	</div>
-</div>
-	
-	
+
+
 	<!--Icon List-->
 	<div class="container">
 		<div class="row">
 			<div class="col-4 col-md-2 mb-4 hvr-float">
-				<a href="#" id="calIcon">						 
-						 <svg onload="init()" xmlns="http://www.w3.org/2000/svg"
-aria-label="Calendar" role="img"
-viewBox="0 0 512 512" class=" app_icon_col4 animated flipInX">
-<script type="text/ecmascript"><![CDATA[
-function init() {
-  var time = new Date();
-  var locale = "en-us";
+				<a href="#" id="calIcon">
+					<svg onload="init()" xmlns="http://www.w3.org/2000/svg" aria-label="Calendar" role="img" viewBox="0 0 512 512" class=" app_icon_col4 animated flipInX">
+						<script type="text/ecmascript">
+							function init() {
+								var time = new Date();
+								var locale = "en-us";
 
-  var DD   = time.getDate();
-  var DDD  = time.toLocaleString(locale, {weekday: "long" });
-  var MMM  = time.toLocaleString(locale, {month:   "short"}).toUpperCase();
+								var DD = time.getDate();
+								var DDD = time.toLocaleString(locale, { weekday: "long" });
+								var MMM = time.toLocaleString(locale, { month: "short" }).toUpperCase();
 
-  document.getElementById("day").textContent= DD;
-  document.getElementById("weekday").textContent= DDD;
-  document.getElementById("month").textContent= MMM;
-  
-  // var DDDD = time.toLocaleString(locale, { weekday: "long" });
-  // var MM   = time.getMonth() + 1;
-  // var MMMM = time.toLocaleString(locale, {month: "long"});
-  // var YYYY = time.getFullYear();
-}
-]]></script>
-<path class="st0" d="M512,455c0,32-25,57-57,57H57c-32,0-57-25-57-57V128c0-31,25-57,57-57h398c32,0,57,26,57,57V455z" fill="#e0e7ec"/>
-<path class="st1" d="M388,0H124" fill="#dd2f45"/>
-<path class="st1" d="M75,0H28C13,0,0,13,0,28v157h512V28c0-15-13-28-28-28h-47" fill="#dd2f45"/>
+								document.getElementById("day").textContent = DD;
+								document.getElementById("weekday").textContent = DDD;
+								document.getElementById("month").textContent = MMM;
 
-<g fill="#f3aab9">
-  <circle cx="450" cy="122" r="14"/>
-  <circle cx="450" cy="80" r="14"/>
-  <circle cx="407" cy="122" r="14"/>
-  <circle cx="407" cy="80" r="14"/>
-  <circle cx="364" cy="122" r="14"/>
-  <circle cx="364" cy="80" r="14"/>
-</g>
+								// var DDDD = time.toLocaleString(locale, { weekday: "long" });
+								// var MM   = time.getMonth() + 1;
+								// var MMMM = time.toLocaleString(locale, {month: "long"});
+								// var YYYY = time.getFullYear();
+							}
+						</script>
+						<path class="st0" d="M512,455c0,32-25,57-57,57H57c-32,0-57-25-57-57V128c0-31,25-57,57-57h398c32,0,57,26,57,57V455z" fill="#e0e7ec"
+						/>
+						<path class="st1" d="M388,0H124" fill="#dd2f45" />
+						<path class="st1" d="M75,0H28C13,0,0,13,0,28v157h512V28c0-15-13-28-28-28h-47" fill="#dd2f45" />
 
-<text id="month"
-  x="32" 
-  y="144" 
-  fill="#fff" 
-  font-family="helvetica"
-  font-size="120px"
-  style="text-anchor: left"></text>
+						<g fill="#f3aab9">
+							<circle cx="450" cy="122" r="14" />
+							<circle cx="450" cy="80" r="14" />
+							<circle cx="407" cy="122" r="14" />
+							<circle cx="407" cy="80" r="14" />
+							<circle cx="364" cy="122" r="14" />
+							<circle cx="364" cy="80" r="14" />
+						</g>
 
-<text id="day"
-  x="256" 
-  y="400" 
-  fill="#66757f" 
-  font-family="helvetica"
-  font-size="256px"
-  style="text-anchor: middle"></text>
+						<text id="month" x="32" y="144" fill="#fff" font-family="helvetica" font-size="120px" style="text-anchor: left"></text>
 
-<text id="weekday"
-  x="256" 
-  y="480" 
-  fill="#66757f" 
-  font-family="helvetica"
-  font-size="64px"
-  style="text-anchor: middle"></text>
-</svg>
-<!-- Here's where this above SVG came from... Shoutout to this individual for making such a useful SVG! -->
+						<text id="day" x="256" y="400" fill="#66757f" font-family="helvetica" font-size="256px" style="text-anchor: middle"></text>
+
+						<text id="weekday" x="256" y="480" fill="#66757f" font-family="helvetica" font-size="64px" style="text-anchor: middle"></text>
+					</svg>
+					<!-- Here's where this above SVG came from... Shoutout to this individual for making such a useful SVG! -->
 					<h3 align="center" id="calText" class="app_subtext_col1 animated bounceInLeft h3">Calendar</h3>
 				</a>
 			</div>
 
 
-<!-- Source for the SVG calendar that shows today's date is here
+			<!-- Source for the SVG calendar that shows today's date is here
 https://jsfiddle.net/8rcrfpwn/4/
 as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 
@@ -330,18 +313,18 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 					<h3 align="center" class="animated bounceInLeft app_subtext_col3 h3">Athletics</h3>
 				</a>
 			</div>
-			
-			
+
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="http://ravenskeyclub.blogspot.com/">
 					<img src="key club svg.svg" class="pb-2 app_icon_col4 animated flipInX">
 					<h3 align="center" class="app_subtext_col4 animated bounceInLeft h3">Key Club</h3>
 				</a>
 			</div>
-			
-			
-			
-			
+
+
+
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="NHS Logo.svg" class="pb-2 app_icon_col3 animated flipInX" id="athleticsIcon">
@@ -349,68 +332,68 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 				</a>
 			</div>
 
-			
-			
-			
-			
-			<!-- KEYCLUB --> 
+
+
+
+
+			<!-- KEYCLUB -->
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="https://nevarmore.ravenscroft.org">
 					<img src="ravenGreenOutline.svg" class="pb-2 app_icon_col4 animated flipInX" id="appIcon">
 					<h3 align="center" class="app_subtext_col4 animated bounceInLeft h3">Nevarmore</h3>
 				</a>
 			</div>
-			
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="http://ravenscsb.blogspot.com">
 					<img src="hand icon.svg" class="pb-2 app_icon_col4 animated flipInX" id="appIcon">
 					<h3 align="center" class="app_subtext_col4 animated bounceInLeft h3">Community Service</h3>
 				</a>
 			</div>
-			
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="ravenGreenOutline.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
 					<p align="center" class="animated bounceInLeft app_subtext_col2 h3">SGA</p>
 				</a>
 			</div>
-			
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="https://docs.google.com/forms/d/e/1FAIpQLScnPWvT7lWWlXAtifxmcB0ZxaqtBGxb3bLiudXkgSlCIUBF8A/viewform?c=0&w=1">
 					<img src="Library.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
 					<p align="center" class="animated bounceInLeft app_subtext_col2 h3">Study Hall</p>
 				</a>
 			</div>
-			
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="ravenGreenOutline.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
 					<p align="center" class="animated bounceInLeft app_subtext_col2 h3">Math Videos</p>
 				</a>
 			</div>
-			
+
 			<div class="col-4 col-md-2 mb-4 hvr-float">
 				<a href="#">
 					<img src="Library.svg" class="pb-2 app_icon_col2 animated flipInX" id="libraryIcon">
 					<p align="center" class="animated bounceInLeft app_subtext_col2 h3">MISC</p>
 				</a>
 			</div>
-			
-			
-			
+
+
+
 		</div>
 	</div>
 	<!-- /.row -->
 
-	
 
-	
-	
-	
-	
 
-	
-	
+
+
+
+
+
+
+
 	<!-- Footer SWITCH THIS FOOTER OUT FOR ONE THAT MOVES -- HAVE NAME, SCHOOL STUFF, AND LINKS TO GMAIL AND GOOGLE DRIVE BEAUSE WHY NOT??
 	<footer class="bg-dark footer">
 		<div class="container">
@@ -418,9 +401,9 @@ as found from ycombinator https://news.ycombinator.com/item?id=16459550 -->
 		</div>
 	</footer>
 	 -->
-<!-- /.container -->
-	
-	
+	<!-- /.container -->
+
+
 </body>
 
 <script>
